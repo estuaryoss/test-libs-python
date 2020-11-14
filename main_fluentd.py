@@ -6,12 +6,12 @@ __author__ = "Catalin Dinuta"
 
 from fluent import sender
 
-from about import properties
-from constants.cli_constants import CLIConstants
-from constants.env_constants import EnvConstants
-from env.environment import EnvironmentSingleton
-from service.fluentd import Fluentd
-from utils.io_utils import IOUtils
+from fluentd_logger.about import properties
+from fluentd_logger.constants.cli_constants import CLIConstants
+from fluentd_logger.constants.env_constants import EnvConstants
+from fluentd_logger.env.environment import EnvironmentSingleton
+from fluentd_logger.service.fluentd import Fluentd
+from fluentd_logger.utils.io_utils import IOUtils
 
 
 @click.command()
@@ -24,17 +24,12 @@ def cli(tag, file, fluentd):
     env = EnvironmentSingleton.get_instance()
     fluentd = fluentd if fluentd is not None else env.get_env_and_virtual_env().get(EnvConstants.FLUENTD_IP_PORT)
 
-    try:
-        if fluentd is None:
-            raise Exception(
-                "Fluentd ip:port location was not detected in command and neither environment variable " + EnvConstants.FLUENTD_IP_PORT + "\n" +
-                "Please set option '-fluentd' in command line interface or set the 'FLUENTD_IP_PORT' environment variable \n")
-        logger = sender.FluentSender(tag=properties.get('name'), host=fluentd.split(":")[0],
-                                     port=int(fluentd.split(":")[1]))
-    except Exception as e:
-        click.echo("Exception: {}".format(e.__str__()))
-        exit(CLIConstants.FAILURE)
-
+    if fluentd is None:
+        raise Exception(
+            "Fluentd ip:port location was not detected in command and neither environment variable " + EnvConstants.FLUENTD_IP_PORT + "\n" +
+            "Please set option '--fluentd' in command line interface or set the 'FLUENTD_IP_PORT' environment variable \n")
+    logger = sender.FluentSender(tag=properties.get('name'), host=fluentd.split(":")[0],
+                                 port=int(fluentd.split(":")[1]))
     service = Fluentd(logger)
 
     try:
