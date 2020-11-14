@@ -7,7 +7,7 @@ python main.py --infile results.json --outfile results.xls
 ```
 
 ### Set details
-There are 3 ways to set the location of fluentd IP:PORT:
+There are 3 ways to set the input variables for the CLI:
 -   Add an 'environment.properties' file containing: IN_FILE=results.json\nOUT_FILE=output.xls
 -   Set infile and outfile using an ENV VARs. E.g. export IN_FILE=results.json && export OUT_FILE=results.xls 
 -   Set infile and outfile using CLI options '--infile' & '--outfile'
