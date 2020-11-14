@@ -2,9 +2,9 @@ import datetime
 import os
 import platform
 
-from about import properties
-from constants.env_constants import EnvConstants
-from utils.env_startup import EnvStartupSingleton
+from fluentd_logger.about import properties
+from fluentd_logger.constants.env_constants import EnvConstants
+from fluentd_logger.utils.env_startup import EnvStartupSingleton
 
 
 class Fluentd:

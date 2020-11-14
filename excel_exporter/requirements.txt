@@ -1,0 +1,7 @@
+click
+pyexcel
+pyexcel-xls
+pyexcel-xlsx
+pyexcel-xlsxw
+pyinstaller
+setuptools==44.0.0
