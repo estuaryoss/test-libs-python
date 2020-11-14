@@ -1,24 +1,18 @@
 ### Description
-Fluentd logging library used to support standardized testing.
+Excel export from json library used to support standardized testing.
 
 ### Call example
 ```bash
-python main.py --tag tag --file README.md --fluentd 129.168.0.100:24224
+python main.py --infile results.json --outfile results.xls
 ```
 
-### Set Fluentd IP:PORT location
+### Set details
 There are 3 ways to set the location of fluentd IP:PORT:
--   Add an 'environment.properties' file containing the location of the fluentd service. E.g. FLUENTD_IP_PORT=localhost:24224  
--   Set fluentd IP:PORT using an env VAR. E.g. export FLUENTD_IP_PORT=localhost:24224  
--   Set fluentd IP:PORT using the option '-fluentd' from the Main class of the jar for jar invocation  
+-   Add an 'environment.properties' file containing: IN_FILE=results.json\nOUT_FILE=output.xls
+-   Set infile and outfile using an ENV VARs. E.g. export IN_FILE=results.json && export OUT_FILE=results.xls 
+-   Set infile and outfile using CLI options '--infile' & '--outfile'
 
 ### Supported formats
-
-## Dict - one single test result (example)
-```json
-{"testName": "exampleTest", "Db": "Mysql57", "OS":"Centos7", "logLocation": "http://logdatabase.com/exampleTest", 
-"startedat":  "Sun Nov  1 10:16:52 EET 2020", "endedat":  "Sun Nov  1 10:22:52 EET 2020", ...otherinformation}
-```
 
 ## List of Dict(s) - multiple test result (example)
 ```json
