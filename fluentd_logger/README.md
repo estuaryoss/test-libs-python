@@ -3,7 +3,7 @@ Fluentd logging library used to support standardized testing.
 
 ### Call example
 ```bash
-python main.py --tag tag --file README.md --fluentd 129.168.0.100:24224
+python main.py --tag regression --file testResults.json --fluentd 127.0.0.1:24224
 ```
 
 ### Set Fluentd IP:PORT location

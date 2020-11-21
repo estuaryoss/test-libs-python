@@ -36,11 +36,11 @@ def cli(tag, file, fluentd):
         message_content = IOUtils.read_dict_from_file(file=file)
         if isinstance(message_content, list):
             for msg in message_content:
-                service.emit(tag=tag, msg=msg)
+                click.echo(service.emit(tag=tag, msg=msg))
         elif isinstance(message_content, dict):
-            service.emit(tag=tag, msg=message_content)
+            click.echo(service.emit(tag=tag, msg=message_content))
         else:
-            raise Exception("Could not deserialize to a List or a Dict")
+            raise Exception("Could not deserialize to a List of Dicts or a Dict")
     except Exception as e:
         click.echo("Exception{}".format(e.__str__()))
         exit(CLIConstants.FAILURE)

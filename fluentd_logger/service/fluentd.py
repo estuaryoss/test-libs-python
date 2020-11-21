@@ -3,8 +3,6 @@ import os
 import platform
 
 from fluentd_logger.about import properties
-from fluentd_logger.constants.env_constants import EnvConstants
-from fluentd_logger.utils.env_startup import EnvStartupSingleton
 
 
 class Fluentd:
@@ -32,7 +30,4 @@ class Fluentd:
         }
 
     def __send(self, tag, msg):
-        if EnvStartupSingleton.get_instance().get_config_env_vars().get(EnvConstants.FLUENTD_IP_PORT):
-            return str(self.logger.emit(tag, msg)).lower()
-
-        return "fluentd logging not enabled"
+        return str(self.logger.emit(tag, msg)).lower()
