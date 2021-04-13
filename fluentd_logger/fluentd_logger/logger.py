@@ -2,25 +2,21 @@ import datetime
 import os
 import platform
 
-from fluentd_logger.about import properties
 
-
-class Fluentd:
+class Logger:
 
     def __init__(self, logger):
         self.logger = logger
 
-    def emit(self, tag, msg):
+    def emit(self, msg, app_label):
         message = self.__enrichlog("INFO", msg)
-        response = self.__send(tag, message)
+        response = self.__send(app_label, message)
         return {"emit": response,
                 "message": message}
 
     @staticmethod
     def __enrichlog(level_code, msg):
         return {
-            "name": properties.get('name'),
-            "version": properties.get('version'),
             "uname": list(platform.uname()),
             "python": platform.python_version(),
             "pid": os.getpid(),
@@ -29,5 +25,5 @@ class Fluentd:
             "timestamp": str(datetime.datetime.now()),
         }
 
-    def __send(self, tag, msg):
-        return str(self.logger.emit(tag, msg)).lower()
+    def __send(self, label, msg):
+        return str(self.logger.emit(label, msg)).lower()

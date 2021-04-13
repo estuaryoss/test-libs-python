@@ -1,5 +1,5 @@
-from fluentd_logger.constants.env_constants import EnvConstants
-from fluentd_logger.env.environment import EnvironmentSingleton
+from fluentd_logger.fluentd_logger.env_constants import EnvConstants
+from fluentd_logger.fluentd_logger.environment import EnvironmentSingleton
 
 
 class EnvStartupSingleton:
