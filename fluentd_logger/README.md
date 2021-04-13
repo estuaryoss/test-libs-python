@@ -2,6 +2,8 @@
 
 Fluentd logging library used to support standardized testing.
 
+![PyPI](https://img.shields.io/pypi/v/fluentd_logger)
+
 ## Programmatic example (Object logging)
 
 ```python

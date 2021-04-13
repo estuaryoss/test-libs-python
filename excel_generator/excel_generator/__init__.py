@@ -7,5 +7,3 @@ Import the `Generator` to generate the Excel:
     >>> generator.generate()
 See https://github.com/estuaryoss/test-libs-python/tree/master/excel_generator for more information
 """
-
-__version__ = "1.0.0"

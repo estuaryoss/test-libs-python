@@ -2,6 +2,8 @@
 
 Excel export from json library used to support standardized testing.
 
+![PyPI](https://img.shields.io/pypi/v/excel_generator)
+
 ## Programmatic example
 
 ```python
