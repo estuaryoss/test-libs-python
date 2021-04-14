@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="excel_generator",
-    version="1.0.2",
+    version="1.0.3",
     author="Catalin Dinuta",
     license="Apache",
     author_email="constantin.dinuta@gmail.com",
@@ -22,7 +22,6 @@ setuptools.setup(
         "pyexcel-xls",
         "pyexcel-xlsx",
         "pyexcel-xlsxw",
-        "setuptools==44.0.0",
         "jproperties"
     ],
     classifiers=[

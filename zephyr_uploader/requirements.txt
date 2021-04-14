@@ -3,4 +3,4 @@ pyexcel
 pyexcel-xls
 pyexcel-xlsx
 pyexcel-xlsxw
-jproperties
+requests~=2.25.1

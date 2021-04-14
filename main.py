@@ -28,3 +28,5 @@ if __name__ == '__main__':
 
     for message in messages:
         service.emit(app_label=app_label, msg=message)
+
+    # 3. zephyr uploader
