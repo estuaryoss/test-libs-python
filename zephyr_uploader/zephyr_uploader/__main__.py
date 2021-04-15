@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from datetime import date
 
 import click
 
@@ -28,8 +27,8 @@ from .constants.cli_constants import CliConstants
               help='The number of threads to be used to upload the test executions. E.g. 10')
 @click.option('--recreateFolder', default=False, help='Recreate the folder under the test cycle or not. '
                                                       'E.g. true. Default: false')
-@click.option('--folderName', default="default_" + date.today().strftime("%Y-%m-%d"),
-              help='The release version. E.g. centos7-mysql8-SNAPSHOT. Default: default_<current_date>')
+@click.option('--folderName', default="default",
+              help='The release version. E.g. centos7-mysql8-SNAPSHOT. Default: default')
 @click.option('--executionStatusColumn', default=6, help='The execution status column which contains the keywords '
                                                          'SUCCESS/FAILURE. E.g. 10. Default: 6')
 @click.option('--commentsColumn', default=8, help='The comments column, for example the link log the logs for the test.'
@@ -59,7 +58,7 @@ def cli(username, password, jira_url, project_key, release_version, test_cycle, 
 
     try:
         sheet = pyexcel.get_sheet(file_name=zephyr_config.get_config().get(CliConstants.REPORT_PATH))
-        excel_data = sheet.to_array()
+        excel_data = sheet.to_array()  # [[c1, c2, c3], [1, 2, 3], [4, 5, 6]]
         zephyr_uploader = ZephyrUploader(ZephyrService(zephyr_config))
         zephyr_uploader.upload_jira_zephyr(excel_data=excel_data)
     except Exception as e:

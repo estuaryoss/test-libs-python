@@ -32,6 +32,7 @@ python -m zephyr_uploader --username auto-robot --password mySecretPasswd123! \
   E.g. -executionStatusColumn=6
 - You also can specify the comments column. For example the link where the test logs are. The default is 8'th column.   
   E.g. -commentsColumn=8
+- Jira Ids column is always the first column in the Excel sheet
 
 ## Precedence
 
