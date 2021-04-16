@@ -1,12 +1,12 @@
 # testing purpose
 import pyexcel
 from fluent import sender
+from excel_generator.generator import Generator
+from fluentd_logger.logger import Logger
 
-from excel_generator.excel_generator.generator import Generator
-from fluentd_logger.fluentd_logger.logger import Logger
-from zephyr_uploader.zephyr_uploader.constants.cli_constants import CliConstants
-from zephyr_uploader.zephyr_uploader.env.env_loader import EnvLoader
-from zephyr_uploader.zephyr_uploader.model.zephyr_config import ZephyrConfigurer
+from zephyr_uploader.zephyr_uploader.cli_constants import CliConstants
+from zephyr_uploader.zephyr_uploader.env_loader import EnvLoader
+from zephyr_uploader.zephyr_uploader.zephyr_configurer import ZephyrConfigurer
 from zephyr_uploader.zephyr_uploader.zephyr_service import ZephyrService
 from zephyr_uploader.zephyr_uploader.zephyr_uploader import ZephyrUploader
 

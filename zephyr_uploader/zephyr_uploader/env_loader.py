@@ -1,8 +1,8 @@
 import distutils
 
-from .environment import EnvironmentSingleton
-from ..constants.cli_constants import CliConstants
-from ..model.zephyr_config import ZephyrConfig
+from cli_constants import CliConstants
+from environment import EnvironmentSingleton
+from zephyr_configurer import ZephyrConfigurer
 
 
 class EnvLoader:
@@ -10,7 +10,7 @@ class EnvLoader:
 
     @staticmethod
     def get_zephyr_config_from_env():
-        zephyr_config = ZephyrConfig()
+        zephyr_config = ZephyrConfigurer()
 
         if EnvLoader.__env.get(CliConstants.USERNAME) is not None:
             zephyr_config[CliConstants.USERNAME] = EnvLoader.__env.get(CliConstants.USERNAME)

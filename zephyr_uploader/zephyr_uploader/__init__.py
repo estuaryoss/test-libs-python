@@ -4,18 +4,18 @@ Import the `ZephyrUploader` class to upload zephyr test executions:
     >>> from zephyr_uploader.zephyr_service import ZephyrService
     >>> from zephyr_uploader.model.zephyr_config_dict import ZephyrConfigurer
     >>> config_dict = {
-        CliConstants.USERNAME: username,
-        CliConstants.PASSWORD: password,
-        CliConstants.JIRA_URL: jira_url,
-        CliConstants.TEST_CYCLE: test_cycle,
-        CliConstants.PROJECT_KEY: project_key,
-        CliConstants.RELEASE_VERSION: release_version,
-        CliConstants.REPORT_PATH: report_path,
-        CliConstants.FOLDER_NAME: folder_name,
-        CliConstants.NO_OF_THREADS: no_of_threads,
-        CliConstants.RECREATE_FOLDER: recreate_folder,
-        CliConstants.COMMENTS_COLUMN: comments_column,
-        CliConstants.EXECUTION_STATUS_COLUMN: execution_status_column
+        CliConstants.USERNAME.value: username,
+        CliConstants.PASSWORD.value: password,
+        CliConstants.JIRA_URL.value: jira_url,
+        CliConstants.TEST_CYCLE.value: test_cycle,
+        CliConstants.PROJECT_KEY.value: project_key,
+        CliConstants.RELEASE_VERSION.value: release_version,
+        CliConstants.REPORT_PATH.value: report_path,
+        CliConstants.FOLDER_NAME.value: folder_name,
+        CliConstants.NO_OF_THREADS.value: no_of_threads,
+        CliConstants.RECREATE_FOLDER.value: recreate_folder,
+        CliConstants.COMMENTS_COLUMN.value: comments_column,
+        CliConstants.EXECUTION_STATUS_COLUMN.value: execution_status_column
     }
     >>> # config_dict = EnvLoader().get_zephyr_config_from_env() # in case a file 'environment.properties is used
     >>> zephyr_configurer = ZephyrConfigurer(config_dict)

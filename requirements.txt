@@ -1,8 +1,8 @@
-fluentd_logger==1.0.0
-excel_generator==1.0.2
+fluentd-logger==1.0.0
+excel-generator==1.0.2
+zephyr-uploader==1.0.2
 fluent~=0.10.0
 click~=7.1.2
 jproperties~=2.1.0
 setuptools~=44.0.0
 pyexcel~=0.6.6
-requests~=2.25.1
