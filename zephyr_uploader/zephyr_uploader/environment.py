@@ -39,8 +39,8 @@ class EnvironmentSingleton:
             print(f"Skipping env vars loading from file '{self.__file}' because it doesn't exist. "
                   + "Exception({})".format(e.__str__()))
 
-            for key in configs:
-                self.set_env_var(key, configs[key][0])
+        for key in configs:
+            self.set_env_var(key, configs[key][0])
 
     def set_env_var(self, key, value):
         if key not in self.__env and len(self.__virtual_env) <= self.__VIRTUAL_ENV_MAX_SIZE:

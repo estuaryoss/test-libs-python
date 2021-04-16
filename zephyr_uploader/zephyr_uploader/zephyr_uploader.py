@@ -2,9 +2,9 @@ import concurrent.futures
 import time
 from datetime import date
 
-from cli_constants import CliConstants
-from execution_status import ExecutionStatus
-from test_status import TestStatus
+from .cli_constants import CliConstants
+from .execution_status import ExecutionStatus
+from .test_status import TestStatus
 
 
 class ZephyrUploader:

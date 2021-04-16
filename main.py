@@ -11,29 +11,29 @@ from zephyr_uploader.zephyr_uploader.zephyr_service import ZephyrService
 from zephyr_uploader.zephyr_uploader.zephyr_uploader import ZephyrUploader
 
 if __name__ == '__main__':
-    # 1. excel generate
-    generator = Generator("testResults.json", "Results.xls")
-    generator.generate()
-
-    # 2. fluentd logger
-    tag = "agent"
-    app_label = "api"
-    logger = sender.FluentSender(tag=tag, host="localhost", port=24224)
-    service = Logger(logger)
-
-    messages = [
-        {
-            "A".value: "A1",
-            "B".value: "B1"
-        },
-        {
-            "C".value: "C1",
-            "D".value: "D1"
-        }
-    ]
-
-    for message in messages:
-        service.emit(app_label=app_label, msg=message)
+    # # 1. excel generate
+    # generator = Generator("testResults.json", "Results.xls")
+    # generator.generate()
+    #
+    # # 2. fluentd logger
+    # tag = "agent"
+    # app_label = "api"
+    # logger = sender.FluentSender(tag=tag, host="localhost", port=24224)
+    # service = Logger(logger)
+    #
+    # messages = [
+    #     {
+    #         "A".value: "A1",
+    #         "B".value: "B1"
+    #     },
+    #     {
+    #         "C".value: "C1",
+    #         "D".value: "D1"
+    #     }
+    # ]
+    #
+    # for message in messages:
+    #     service.emit(app_label=app_label, msg=message)
 
     # 3. zephyr uploader
     zephyr_config_dict = EnvLoader().get_zephyr_config_from_env()

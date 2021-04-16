@@ -1,46 +1,55 @@
-import distutils
+from distutils import util
 
-from cli_constants import CliConstants
-from environment import EnvironmentSingleton
-from zephyr_configurer import ZephyrConfigurer
+from .cli_constants import CliConstants
+from .environment import EnvironmentSingleton
 
 
 class EnvLoader:
-    __env = EnvironmentSingleton.get_instance().get_env_and_virtual_env()
 
-    @staticmethod
-    def get_zephyr_config_from_env():
-        zephyr_config = ZephyrConfigurer()
+    def __init__(self):
+        self.env = EnvironmentSingleton.get_instance().get_env_and_virtual_env()
 
-        if EnvLoader.__env.get(CliConstants.USERNAME) is not None:
-            zephyr_config[CliConstants.USERNAME] = EnvLoader.__env.get(CliConstants.USERNAME)
+    def get_zephyr_config_from_env(self):
+        zephyr_config_dict = {}
 
-        if EnvLoader.__env.get(CliConstants.PASSWORD) is not None:
-            zephyr_config[CliConstants.PASSWORD] = EnvLoader.__env.get(CliConstants.PASSWORD)
+        if self.env.get(CliConstants.USERNAME.value) is not None:
+            zephyr_config_dict[CliConstants.USERNAME.value] = self.env.get(CliConstants.USERNAME.value)
 
-        if EnvLoader.__env.get(CliConstants.JIRA_URL) is not None:
-            zephyr_config[CliConstants.JIRA_URL] = EnvLoader.__env.get(CliConstants.JIRA_URL)
+        if self.env.get(CliConstants.PASSWORD.value) is not None:
+            zephyr_config_dict[CliConstants.PASSWORD.value] = self.env.get(CliConstants.PASSWORD.value)
 
-        if EnvLoader.__env.get(CliConstants.PROJECT_KEY) is not None:
-            zephyr_config[CliConstants.PROJECT_KEY] = EnvLoader.__env.get(CliConstants.PROJECT_KEY)
+        if self.env.get(CliConstants.JIRA_URL.value) is not None:
+            zephyr_config_dict[CliConstants.JIRA_URL.value] = self.env.get(CliConstants.JIRA_URL.value)
 
-        if EnvLoader.__env.get(CliConstants.RELEASE_VERSION) is not None:
-            zephyr_config[CliConstants.RELEASE_VERSION] = EnvLoader.__env.get(CliConstants.RELEASE_VERSION)
+        if self.env.get(CliConstants.PROJECT_KEY.value) is not None:
+            zephyr_config_dict[CliConstants.PROJECT_KEY.value] = self.env.get(CliConstants.PROJECT_KEY.value)
 
-        if EnvLoader.__env.get(CliConstants.TEST_CYCLE) is not None:
-            zephyr_config[CliConstants.TEST_CYCLE] = EnvLoader.__env.get(CliConstants.TEST_CYCLE)
+        if self.env.get(CliConstants.RELEASE_VERSION.value) is not None:
+            zephyr_config_dict[CliConstants.RELEASE_VERSION.value] = self.env.get(
+                CliConstants.RELEASE_VERSION.value)
 
-        if EnvLoader.__env.get(CliConstants.REPORT_PATH) is not None:
-            zephyr_config[CliConstants.REPORT_PATH] = EnvLoader.__env.get(CliConstants.REPORT_PATH)
+        if self.env.get(CliConstants.TEST_CYCLE.value) is not None:
+            zephyr_config_dict[CliConstants.TEST_CYCLE.value] = self.env.get(CliConstants.TEST_CYCLE.value)
 
-        if EnvLoader.__env.get(CliConstants.FOLDER_NAME) is not None:
-            zephyr_config[CliConstants.FOLDER_NAME] = EnvLoader.__env.get(CliConstants.FOLDER_NAME)
+        if self.env.get(CliConstants.REPORT_PATH.value) is not None:
+            zephyr_config_dict[CliConstants.REPORT_PATH.value] = self.env.get(CliConstants.REPORT_PATH.value)
 
-        if EnvLoader.__env.get(CliConstants.NO_OF_THREADS) is not None:
-            zephyr_config[CliConstants.NO_OF_THREADS] = int(EnvLoader.__env.get(CliConstants.NO_OF_THREADS))
+        if self.env.get(CliConstants.FOLDER_NAME.value) is not None:
+            zephyr_config_dict[CliConstants.FOLDER_NAME.value] = self.env.get(CliConstants.FOLDER_NAME.value)
 
-        if EnvLoader.__env.get(CliConstants.RECREATE_FOLDER) is not None:
-            zephyr_config[CliConstants.RECREATE_FOLDER] = bool(
-                distutils.util.strtobool(EnvLoader.__env.get(CliConstants.RECREATE_FOLDER)))
+        if self.env.get(CliConstants.NO_OF_THREADS.value) is not None:
+            zephyr_config_dict[CliConstants.NO_OF_THREADS.value] = int(
+                self.env.get(CliConstants.NO_OF_THREADS.value))
 
-        return zephyr_config
+        if self.env.get(CliConstants.RECREATE_FOLDER.value) is not None:
+            zephyr_config_dict[CliConstants.RECREATE_FOLDER.value] = bool(
+                util.strtobool(self.env.get(CliConstants.RECREATE_FOLDER.value)))
+
+        if self.env.get(CliConstants.COMMENTS_COLUMN.value) is not None:
+            zephyr_config_dict[CliConstants.COMMENTS_COLUMN.value] = int(self.env.get(CliConstants.COMMENTS_COLUMN.value))
+
+        if self.env.get(CliConstants.EXECUTION_STATUS_COLUMN.value) is not None:
+            zephyr_config_dict[CliConstants.EXECUTION_STATUS_COLUMN.value] = int(
+                self.env.get(CliConstants.EXECUTION_STATUS_COLUMN.value))
+
+        return zephyr_config_dict

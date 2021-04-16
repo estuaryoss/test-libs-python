@@ -2,7 +2,7 @@ import json
 
 import requests
 
-from cli_constants import CliConstants
+from .cli_constants import CliConstants
 
 
 class ZephyrService:
