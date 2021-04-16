@@ -16,8 +16,8 @@ setuptools.setup(
     packages=["zephyr_uploader"],
     install_requires=[
         "click",
-        "setuptools==44.0.0",
-        "jproperties"
+        "pyexcel"
+        "requests~=2.25.1"
     ],
     classifiers=[
         "Programming Language :: Python :: 3.7",

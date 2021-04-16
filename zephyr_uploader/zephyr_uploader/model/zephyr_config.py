@@ -1,58 +1,66 @@
 from unittest import TestCase
 
-from zephyr_uploader.zephyr_uploader.constants.cli_constants import CliConstants
+from ..constants.cli_constants import CliConstants
 
 
-class ZephyrConfig(TestCase):
-    def __init__(self, config={}):
+class ZephyrConfigurer(TestCase):
+    def __init__(self, zephyr_config_dict={}):
         """
         The config is a dict with all the details
         """
-        self.config = config
+        self.zephyr_config_dict = zephyr_config_dict
 
     def validate(self):
-        self.assertIsNot(self.config.get(CliConstants.USERNAME), None)
-        self.assertIsNot(self.config.get(CliConstants.PASSWORD), None)
-        self.assertIsNot(self.config.get(CliConstants.JIRA_URL), None)
-        self.assertIsNot(self.config.get(CliConstants.TEST_CYCLE), None)
-        self.assertIsNot(self.config.get(CliConstants.PROJECT_KEY), None)
-        self.assertIsNot(self.config.get(CliConstants.RELEASE_VERSION), None)
-        self.assertIsNot(self.config.get(CliConstants.REPORT_PATH), None)
-        self.assertIsNot(self.config.get(CliConstants.FOLDER_NAME), None)
-        self.assertIsNot(self.config.get(CliConstants.NO_OF_THREADS), None)
-        self.assertIsNot(self.config.get(CliConstants.RECREATE_FOLDER), None)
-        self.assertIsNot(self.config.get(CliConstants.COMMENTS_COLUMN), None)
-        self.assertIsNot(self.config.get(CliConstants.EXECUTION_STATUS_COLUMN), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.USERNAME.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.PASSWORD.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.JIRA_URL.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.TEST_CYCLE.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.PROJECT_KEY.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.RELEASE_VERSION.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.REPORT_PATH.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.FOLDER_NAME.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.NO_OF_THREADS.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.RECREATE_FOLDER.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.COMMENTS_COLUMN.value), None)
+        self.assertIsNot(self.zephyr_config_dict.get(CliConstants.EXECUTION_STATUS_COLUMN.value), None)
 
     def get_config(self):
-        return self.config
+        return self.zephyr_config_dict
 
-    def set_config(self, config):
-        self.config = config
+    def set_config(self, zephyr_config_dict):
+        self.zephyr_config_dict = zephyr_config_dict
 
-    def override_or_set_default(self, zephyr_config):
-        if zephyr_config.get(CliConstants.USERNAME) is not None:
-            self.zephyr_config[CliConstants.USERNAME] = zephyr_config.get(CliConstants.USERNAME)
-        if zephyr_config.get(CliConstants.PASSWORD) is not None:
-            self.zephyr_config[CliConstants.PASSWORD] = zephyr_config.get(CliConstants.PASSWORD)
-        if zephyr_config.get(CliConstants.JIRA_URL) is not None:
-            self.zephyr_config[CliConstants.JIRA_URL] = zephyr_config.get(CliConstants.JIRA_URL)
-        if zephyr_config.get(CliConstants.TEST_CYCLE) is not None:
-            self.zephyr_config[CliConstants.TEST_CYCLE] = zephyr_config.get(CliConstants.TEST_CYCLE)
-        if zephyr_config.get(CliConstants.PROJECT_KEY) is not None:
-            self.zephyr_config[CliConstants.PROJECT_KEY] = zephyr_config.get(CliConstants.PROJECT_KEY)
-        if zephyr_config.get(CliConstants.RELEASE_VERSION) is not None:
-            self.zephyr_config[CliConstants.RELEASE_VERSION] = zephyr_config.get(CliConstants.RELEASE_VERSION)
-        if zephyr_config.get(CliConstants.REPORT_PATH) is not None:
-            self.zephyr_config[CliConstants.REPORT_PATH] = zephyr_config.get(CliConstants.REPORT_PATH)
-        if zephyr_config.get(CliConstants.FOLDER_NAME) is not None:
-            self.zephyr_config[CliConstants.FOLDER_NAME] = zephyr_config.get(CliConstants.FOLDER_NAME)
-        self.zephyr_config[CliConstants.NO_OF_THREADS] = zephyr_config.get(CliConstants.NO_OF_THREADS) if \
-            zephyr_config.get(CliConstants.TESTNO_OF_THREADS_CYCLE) is not None else 10
-        self.zephyr_config[CliConstants.RECREATE_FOLDER] = zephyr_config.get(CliConstants.RECREATE_FOLDER) if \
-            zephyr_config.get(CliConstants.RECREATE_FOLDER) is not None else False
-        self.zephyr_config[CliConstants.EXECUTION_STATUS_COLUMN] = zephyr_config.get(
-            CliConstants.EXECUTION_STATUS_COLUMN) if \
-            zephyr_config.get(CliConstants.EXECUTION_STATUS_COLUMN) is not None else 6
-        self.zephyr_config[CliConstants.COMMENTS_COLUMN] = zephyr_config.get(CliConstants.COMMENTS_COLUMN) if \
-            zephyr_config.get(CliConstants.COMMENTS_COLUMN) is not None else 8
+    def override_or_set_default(self, zephyr_config_dict):
+        if zephyr_config_dict.get(CliConstants.USERNAME.value) is not None:
+            self.zephyr_config_dict[CliConstants.USERNAME.value] = zephyr_config_dict.get(CliConstants.USERNAME.value)
+        if zephyr_config_dict.get(CliConstants.PASSWORD.value) is not None:
+            self.zephyr_config_dict[CliConstants.PASSWORD.value] = zephyr_config_dict.get(CliConstants.PASSWORD.value)
+        if zephyr_config_dict.get(CliConstants.JIRA_URL.value) is not None:
+            self.zephyr_config_dict[CliConstants.JIRA_URL.value] = zephyr_config_dict.get(CliConstants.JIRA_URL.value)
+        if zephyr_config_dict.get(CliConstants.TEST_CYCLE.value) is not None:
+            self.zephyr_config_dict[CliConstants.TEST_CYCLE.value] = zephyr_config_dict.get(
+                CliConstants.TEST_CYCLE.value)
+        if zephyr_config_dict.get(CliConstants.PROJECT_KEY.value) is not None:
+            self.zephyr_config_dict[CliConstants.PROJECT_KEY.value] = zephyr_config_dict.get(
+                CliConstants.PROJECT_KEY.value)
+        if zephyr_config_dict.get(CliConstants.RELEASE_VERSION.value) is not None:
+            self.zephyr_config_dict[CliConstants.RELEASE_VERSION.value] = zephyr_config_dict.get(
+                CliConstants.RELEASE_VERSION.value)
+        if zephyr_config_dict.get(CliConstants.REPORT_PATH.value) is not None:
+            self.zephyr_config_dict[CliConstants.REPORT_PATH.value] = zephyr_config_dict.get(
+                CliConstants.REPORT_PATH.value)
+        if zephyr_config_dict.get(CliConstants.FOLDER_NAME.value) is not None:
+            self.zephyr_config_dict[CliConstants.FOLDER_NAME.value] = zephyr_config_dict.get(
+                CliConstants.FOLDER_NAME.value)
+        self.zephyr_config_dict[CliConstants.NO_OF_THREADS.value] = zephyr_config_dict.get(
+            CliConstants.NO_OF_THREADS.value) if \
+            self.zephyr_config_dict.get(CliConstants.NO_OF_THREADS.value) is not None else 10
+        self.zephyr_config_dict[CliConstants.RECREATE_FOLDER.value] = zephyr_config_dict.get(
+            CliConstants.RECREATE_FOLDER.value) if \
+            self.zephyr_config_dict.get(CliConstants.RECREATE_FOLDER.value) is not None else False
+        self.zephyr_config_dict[CliConstants.EXECUTION_STATUS_COLUMN.value] = zephyr_config_dict.get(
+            CliConstants.EXECUTION_STATUS_COLUMN.value) if \
+            self.zephyr_config_dict.get(CliConstants.EXECUTION_STATUS_COLUMN.value) is not None else 6
+        self.zephyr_config_dict[CliConstants.COMMENTS_COLUMN.value] = zephyr_config_dict.get(
+            CliConstants.COMMENTS_COLUMN.value) if \
+            self.zephyr_config_dict.get(CliConstants.COMMENTS_COLUMN.value) is not None else 8

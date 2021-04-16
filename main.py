@@ -1,8 +1,14 @@
 # testing purpose
+import pyexcel
 from fluent import sender
 
 from excel_generator.excel_generator.generator import Generator
 from fluentd_logger.fluentd_logger.logger import Logger
+from zephyr_uploader.zephyr_uploader.constants.cli_constants import CliConstants
+from zephyr_uploader.zephyr_uploader.env.env_loader import EnvLoader
+from zephyr_uploader.zephyr_uploader.model.zephyr_config import ZephyrConfigurer
+from zephyr_uploader.zephyr_uploader.zephyr_service import ZephyrService
+from zephyr_uploader.zephyr_uploader.zephyr_uploader import ZephyrUploader
 
 if __name__ == '__main__':
     # 1. excel generate
@@ -17,12 +23,12 @@ if __name__ == '__main__':
 
     messages = [
         {
-            "A": "A1",
-            "B": "B1"
+            "A".value: "A1",
+            "B".value: "B1"
         },
         {
-            "C": "C1",
-            "D": "D1"
+            "C".value: "C1",
+            "D".value: "D1"
         }
     ]
 
@@ -30,3 +36,14 @@ if __name__ == '__main__':
         service.emit(app_label=app_label, msg=message)
 
     # 3. zephyr uploader
+    zephyr_config_dict = EnvLoader().get_zephyr_config_from_env()
+    zephyr_configurer = ZephyrConfigurer(zephyr_config_dict)
+    zephyr_configurer.validate()
+
+    try:
+        sheet = pyexcel.get_sheet(file_name=zephyr_configurer.get_config().get(CliConstants.REPORT_PATH.value))
+        excel_data = sheet.to_array()
+        zephyr_uploader = ZephyrUploader(ZephyrService(zephyr_configurer))
+        zephyr_uploader.upload_jira_zephyr(excel_data=excel_data)
+    except Exception as e:
+        print(e.__str__())

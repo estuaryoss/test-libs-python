@@ -24,9 +24,9 @@ def cli(infile, outfile):
         generator.generate()
     except Exception as e:
         click.echo(e.__str__())
-        exit(CLIConstants.FAILURE)
+        exit(CLIConstants.FAILURE.value)
 
-    exit(CLIConstants.SUCCESS)
+    exit(CLIConstants.SUCCESS.value)
 
 
 if __name__ == "__main__":
