@@ -6,12 +6,12 @@ __author__ = "Catalin Dinuta"
 
 import pyexcel
 
-from .env.env_loader import EnvLoader
+from zephyr_uploader.zephyr_uploader.env_loader import EnvLoader
 from .zephyr_service import ZephyrService
 from .zephyr_uploader import ZephyrUploader
-from .constants.exit_constants import ExitConstants
-from .model.zephyr_config import ZephyrConfigurer
-from .constants.cli_constants import CliConstants
+from zephyr_uploader.zephyr_uploader.exit_constants import ExitConstants
+from zephyr_uploader.zephyr_uploader.zephyr_config import ZephyrConfigurer
+from zephyr_uploader.zephyr_uploader.cli_constants import CliConstants
 
 
 @click.command()

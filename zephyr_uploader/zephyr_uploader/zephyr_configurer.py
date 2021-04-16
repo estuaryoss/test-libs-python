@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from ..constants.cli_constants import CliConstants
+from .cli_constants import CliConstants
 
 
 class ZephyrConfigurer(TestCase):

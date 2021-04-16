@@ -3,7 +3,7 @@
 Fluentd logging library used to support standardized testing. Takes as input an Excel document.  
 The Excel document can be generated with [excel_generator](https://github.com/estuaryoss/test-libs-python/tree/master/excel_generator)
 
-![PyPI](https://img.shields.io/pypi/v/zephyr_uploader)
+![PyPI](https://img.shields.io/pypi/v/zephyr-uploader)
 
 ### Description
 
@@ -13,8 +13,8 @@ Upload test results in Jira Zephyr library used to support standardized testing.
 
 ```bash
 python -m zephyr_uploader --username auto-robot --password mySecretPasswd123! \
---jiraUrl http://jira.yourcompany.com/rest/ --projectKey AIP --releaseVersion 1.2-UP2020 --testCycle Regression --reportPath Regression_FTP.xls \
---noOfThreads=10 --folderName Results --recreateFolder false 
+--jira_url http://jira.yourcompany.com/rest/ --project_key AIP --release_version 1.2-UP2020 --test_cycle Regression --report_path Regression_FTP.xls \
+--no_of_threads=10 --folder_name Results --recreate_folder false 
 ```
 
 ## Programmatic example from Excel file
