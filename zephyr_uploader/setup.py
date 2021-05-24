@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="zephyr_uploader",
-    version="1.0.2",
+    version="1.0.3",
     author="Catalin Dinuta",
     author_email="constantin.dinuta@gmail.com",
     description="Upload test execution results to Jira Zephyr. The input is an Excel document.",
